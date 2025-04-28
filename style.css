@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;  /* deixa a sua listagem sem pontos e barras*/
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    background-color: #17202a;
+    color: #fff;
+    font-size: 16px;
+      /* Define que o seu site nõ ver ter barra de rolagem*/
+}
+
+header {
+    position: fixed;             /* Deixa o elemento fixo */
+    width: 90vw;                 /* denifine o tamanho do espaçamento dos seus alementos*/
+    top: 0;                      /* define onde o seu elemento vai ficar fixado */ 
+    padding: 20px 50px;          /* sempre se lembre que primeiro vem o tamanho e depois a largura*/
+    display: flex;
+    justify-content: space-between;       /* alinha o seus alementos no final do seu site*/
+    align-items: center;
+    z-index: 3;                    /* comando de sobreposição que define que um elemento sempre vai estar na frente */ 
+}
+
+header nav ul {
+    display: flex;
+    gap: 48px;
+}
+
+header nav ul li {
+    cursor: pointer;
+    position: relative;  /* permite que possa fazer alterações futuras nas posições*/
+    padding: 5px 0px;
+}
+
+header nav ul li::after {    /* After significa algo depois do seu conteudo*/
+    content: '';         /* Content sigifinica conteudo as apas estão deifinindo que logo após o conteudo não tem nenhum tipo de valor " resumindo não tem nada" */
+    position: absolute;  /*Permite colocar o alemento em qualquer lugar da tela no lugar exato */
+    left: 0;  /* Left sigifica logo após o elemento nesse caso não tem nada*/
+    bottom: 0;  /* Sigifica logo a baixo onde o seu conteudo está*/
+    width: 0;   /* Está zerado pois está sendo defiinido depois da transmissão.*/
+    height: 2px;  /*Tamanho do elemento*/
+    background-color: #40E0D0;
+    transition: width 0.5s;  /* tempo da animação para aparecer o alemento*/
+}
+
+header nav ul li:hover::after {   /* Hover sigifica que a interação vai aparcer logo após o cursos passar em cima*/
+    width: 100px; /* Tamanho do elemento depois da transição*/ 
+}
+
+.conteiner {
+    height: 100%;
+    background: linear-gradient(135deg, #0f0f1e 0%, #1f1f3a 100px);
+    position: relative;
+    overflow: hidden;   
+}
+
+.conteiner::before {
+    content:'';
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: linear-gradient(circle, rgba(138, 43, 226, 0.3) 0%, rgba(15, 15, 30, 0) 70%);
+    position:absolute;  
+    top: 50%;   /* essa função até o tranform: translate alinha o seu elemento no meio da tela. */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(50px);  /* ddeixa o seu fundo da cor diferente mais desfocado*/
+    z-index: 1;
+    animation: pulse 5s infinite alternate; 
+}
+
+@keyframes pulse {
+ 0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.8);
+ }
+ 100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.5); 
+ }
+
+
+}
