@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    list-style: none;  /* deixa a sua listagem sem pontos e barras*/
+    list-style: none;
     font-family: "Montserrat", sans-serif;
 }
 
@@ -10,18 +10,19 @@ body {
     background-color: #17202a;
     color: #fff;
     font-size: 16px;
-      /* Define que o seu site nõ ver ter barra de rolagem*/
+    overflow: auto; /* Permite rolagem */
 }
 
 header {
-    position: fixed;             /* Deixa o elemento fixo */
-    width: 90vw;                 /* denifine o tamanho do espaçamento dos seus alementos*/
-    top: 0;                      /* define onde o seu elemento vai ficar fixado */ 
-    padding: 20px 50px;          /* sempre se lembre que primeiro vem o tamanho e depois a largura*/
+    position: fixed;
+    width: 90vw;
+    top: 0;
+    padding: 20px 50px;
     display: flex;
-    justify-content: space-between;       /* alinha o seus alementos no final do seu site*/
+    justify-content: space-between;
     align-items: center;
-    z-index: 3;                    /* comando de sobreposição que define que um elemento sempre vai estar na frente */ 
+    z-index: 3;
+    background-color: #17202a; /* Evita conteúdo "vazando" atrás do header */
 }
 
 header nav ul {
@@ -31,56 +32,118 @@ header nav ul {
 
 header nav ul li {
     cursor: pointer;
-    position: relative;  /* permite que possa fazer alterações futuras nas posições*/
+    position: relative;
     padding: 5px 0px;
 }
 
-header nav ul li::after {    /* After significa algo depois do seu conteudo*/
-    content: '';         /* Content sigifinica conteudo as apas estão deifinindo que logo após o conteudo não tem nenhum tipo de valor " resumindo não tem nada" */
-    position: absolute;  /*Permite colocar o alemento em qualquer lugar da tela no lugar exato */
-    left: 0;  /* Left sigifica logo após o elemento nesse caso não tem nada*/
-    bottom: 0;  /* Sigifica logo a baixo onde o seu conteudo está*/
-    width: 0;   /* Está zerado pois está sendo defiinido depois da transmissão.*/
-    height: 2px;  /*Tamanho do elemento*/
+header nav ul li::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
     background-color: #40E0D0;
-    transition: width 0.5s;  /* tempo da animação para aparecer o alemento*/
+    transition: width 0.5s;
 }
 
-header nav ul li:hover::after {   /* Hover sigifica que a interação vai aparcer logo após o cursos passar em cima*/
-    width: 100px; /* Tamanho do elemento depois da transição*/ 
+header nav ul li:hover::after {
+    width: 100px;
 }
 
-.conteiner {
-    height: 100%;
-    background: linear-gradient(135deg, #0f0f1e 0%, #1f1f3a 100px);
+.container {
     position: relative;
-    overflow: hidden;   
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 100px; /* Compensa a altura do header fixo */
+    min-height: 100vh;
 }
 
-.conteiner::before {
-    content:'';
+.container::before {
+    content: '';
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: linear-gradient(circle, rgba(138, 43, 226, 0.3) 0%, rgba(15, 15, 30, 0) 70%);
-    position:absolute;  
-    top: 50%;   /* essa função até o tranform: translate alinha o seu elemento no meio da tela. */
+    background: radial-gradient(circle, rgba(64, 224, 208, 0.3) 0%, rgba(15, 15, 30, 0) 70%);
+    position: absolute;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    filter: blur(50px);  /* ddeixa o seu fundo da cor diferente mais desfocado*/
+    filter: blur(50px);
     z-index: 1;
-    animation: pulse 5s infinite alternate; 
+    animation: pulse 5s infinite alternate;
+    transform: translate(-50%, -50%);
 }
 
 @keyframes pulse {
- 0% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(0.8);
- }
- 100% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.5); 
- }
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
 
+.item {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    z-index: 2; /* Para aparecer acima do fundo animado */
+}
+
+.active {
+    opacity: 1;
+}
+
+.image {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;    
+}
+
+.image img {
+    max-width: 80%;
+    max-height: 50%;
+    filter: drop-shadow(0 0 30px rgba(0, 247, 255, 0.3));
+}
+
+.content {
+    width: 50%;
+    padding-right: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 2;
+    flex-direction: column;
+}
+
+.content h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #40E0D0;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.content p {
+    font-size: 1.1.rem;  
+    
 
 }
+
+
+
+
+
+
+
+
+
