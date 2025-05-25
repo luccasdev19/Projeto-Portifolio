@@ -198,6 +198,29 @@ header nav ul li:hover::after {
     z-index: 5;
 }
 
+.numbers {
+    font-family: "Orbitron", sans-serif;   
+    font-size: 2rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.2)
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+}
+.dot {
+    width: 40px;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+.dot.active {
+    background-color: #40E0D0;
+    box-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+}
+
 
 
 
