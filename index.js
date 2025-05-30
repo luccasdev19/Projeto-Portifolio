@@ -5,7 +5,8 @@ const contentdot = document.querySelectorAll('.dot');
 const contentnumbers = document.querySelector('.numbers'); 
 
 let active = 0; 
-const total = contentitem.length; 
+const total = contentitem.length;
+ let timer;
 
 function update(direction) {
     // Remove classe active atual
@@ -26,6 +27,11 @@ function update(direction) {
     contentdot[active].classList.add('active');
     contentnumbers.textContent = `0${active + 1}`;
 }
+
+clearInterval(timer)
+timer = setInterval(() => {
+    update(1)
+}, 4000);
 
 prevbutton.addEventListener('click', () => {
     update(-1);
